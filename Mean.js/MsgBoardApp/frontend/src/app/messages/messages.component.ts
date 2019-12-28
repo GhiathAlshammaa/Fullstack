@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
-  messages = [{text: 'Some Text' , owner: 'Tim'}, {text: 'Some Text', owner: 'Tim'} ];
+  projectTitle = 'Messages Board App';
+  messages = [{text: 'First Text' , owner: 'Maher'}, {text: 'Second Text', owner: 'Hamdo'} ];
   constructor() { }
 
   ngOnInit() {

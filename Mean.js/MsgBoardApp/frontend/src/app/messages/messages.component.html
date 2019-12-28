@@ -1,1 +1,6 @@
-<h2> Messages Number: {{messages.length}}</h2>
+
+<h1 style="margin-left: 8px"> {{projectTitle}} </h1>
+<mat-card *ngFor="let message of messages " style="margin: 8px">
+    <mat-card-title >{{message.owner}}</mat-card-title>
+    <mat-card-content>{{message.text}}</mat-card-content>
+</mat-card>
