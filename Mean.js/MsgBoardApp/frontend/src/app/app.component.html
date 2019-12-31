@@ -1,3 +1,7 @@
 
-<app-messages></app-messages>
-<router-outlet></router-outlet>
+<app-header></app-header>
+<main>
+    <app-post-create (postCreated) = "onPostAdded($event)"></app-post-create>
+    <app-posts-list [posts] = "storedPosts"></app-posts-list>  
+    <router-outlet></router-outlet>
+</main>
