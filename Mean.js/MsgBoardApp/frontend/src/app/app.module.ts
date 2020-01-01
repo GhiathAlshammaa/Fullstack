@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { PostListComponent } from './posts/posts-list/posts-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
-// import { WebService } from './web.service';
 import { HttpModule } from '@angular/http';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
@@ -42,7 +41,6 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatButtonModule,
     MatExpansionModule
   ],
- // providers: [WebService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

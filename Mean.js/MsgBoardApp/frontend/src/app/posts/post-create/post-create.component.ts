@@ -2,6 +2,7 @@ import { Component, EventEmitter , Output, OnInit } from '@angular/core';
 import { Post } from '../post.model';
 import { postTypes } from '../postTypes.enum';
 import { NgForm } from '@angular/forms';
+import { PostsService } from '../posts.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit {
-
+  constructor(private postsService: PostsService) { }
   enteredContent = '';
   enteredTitle = '';
 
