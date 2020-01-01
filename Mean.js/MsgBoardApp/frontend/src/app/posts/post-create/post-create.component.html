@@ -1,19 +1,47 @@
 <mat-card>
+  <form (submit)= "onAddPost(postForm)" #postForm="ngForm">
     <mat-form-field style="margin-right:28px">
-        <input matInput type = "text" placeholder="Title" [(ngModel)] = "enteredTitle">
+        <input 
+         matInput 
+         type = "text" 
+         placeholder="Title"
+         name="title"
+         ngModel
+         required
+         minlength= "4"
+         #title="ngModel">
+         <mat-error *ngIf="title.invalid"> Please enter a post title. </mat-error>
     </mat-form-field>
     <mat-form-field>
-        <mat-select placeholder="Select">
-          <mat-option value="option">Option</mat-option>
+        <mat-select 
+        name="type"
+        ngModel
+        required
+        #type="ngModel"
+        placeholder="Post Type">
+          <mat-option *ngFor="let value of typeOptions" value="{{types[value]}}">
+            {{types[value]}}
+          </mat-option>
         </mat-select>
-    </mat-form-field>
+        <mat-error *ngIf="type.invalid"> Please enter a post type. </mat-error>
+      </mat-form-field>
+
     <br>
     <mat-form-field>
-      <textarea matInput  rows='6' cols='12' placeholder="Content ..." [(ngModel)] = "enteredContent" ></textarea>
+      <textarea 
+       matInput  
+       rows='6'
+       placeholder="Content ..."
+       name= "content"
+       ngModel
+       required
+       #content="ngModel"></textarea>
+       <mat-error *ngIf="content.invalid"> Please enter a post content. </mat-error>
     </mat-form-field>
     <br>
     <button 
      mat-raised-button 
      color='primary' 
-     (click) = "onAddPost()">Save Post</button>
+     type="submit">Save Post</button>
+  </form>
 </mat-card>

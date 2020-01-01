@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 // import { WebService } from '../web.service';
+import { Post } from '../post.model';
 
 @Component({
   selector: 'app-posts-list',
@@ -8,6 +9,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PostListComponent  {
 
-  @Input() posts = [];
+  @Input() posts: Post[] = [];
   // constructor(private webService: WebService) { }
 }
