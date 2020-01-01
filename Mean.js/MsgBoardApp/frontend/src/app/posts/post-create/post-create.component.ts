@@ -1,4 +1,4 @@
-import { Component, EventEmitter , Output, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Post } from '../post.model';
 import { postTypes } from '../postTypes.enum';
 import { NgForm } from '@angular/forms';
@@ -11,7 +11,7 @@ import { PostsService } from '../posts.service';
   styleUrls: ['./post-create.component.css']
 })
 export class PostCreateComponent implements OnInit {
-  constructor(private postsService: PostsService) { }
+  constructor(public postsService: PostsService) {}
   enteredContent = '';
   enteredTitle = '';
 
@@ -22,7 +22,6 @@ export class PostCreateComponent implements OnInit {
   // userOption: postTypes = postTypes.postType1; /* after use FormModel, we don't need any more */
   // a array content the indexs, to the types enum
   typeOptions = Object.keys(postTypes).filter(x => Number(x) >= 0 );
-  @Output() postCreated = new EventEmitter<Post>();
 
   ngOnInit() {
     console.log('valueOptions: ' + this.typeOptions);
@@ -37,7 +36,7 @@ export class PostCreateComponent implements OnInit {
       content: form.value.content,
       type: form.value.type
     };
-    this.postCreated.emit(post);
+    this.postsService.addPost(post);
   }
 
 }
