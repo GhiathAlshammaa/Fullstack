@@ -20,6 +20,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   bootstrap: [AppComponent]
 })
