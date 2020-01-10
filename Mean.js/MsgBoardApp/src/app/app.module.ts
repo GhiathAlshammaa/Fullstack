@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import { HttpModule } from '@angular/http';
 import { HeaderComponent } from './header/header.component';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { PostCreateComponent } from './posts/post-create/post-create.component';
@@ -34,7 +34,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     AppRoutingModule,
     HttpModule,
     BrowserAnimationsModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatCardModule,
     MatToolbarModule,
