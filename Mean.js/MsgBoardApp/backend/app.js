@@ -7,7 +7,7 @@ const postsRoutes = require("./routes/posts");
 
 const app = express();
 
-mongoose.connect("mongodb://admin:admin113355@ds135335.mlab.com:35335/notes")
+mongoose.connect("mongodb://admin:admin113355@ds135335.mlab.com:35335/notes", { useNewUrlParser: true })
     .then(() => {
         console.log('connected to database!');
     })
