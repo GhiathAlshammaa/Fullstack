@@ -9,11 +9,12 @@ import { MatCardModule } from "@angular/material/card";
 import { HttpModule } from "@angular/http";
 import { HeaderComponent } from "./header/header.component";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { PostCreateComponent } from "./posts/post-create/post-create.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { SignupComponent } from "./auth/signup/signup.component";
+import { AuthInterceptor } from "./auth/auth-interceptor";
 
 /* Angular Material */
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -51,6 +52,9 @@ import { MatPaginatorModule } from "@angular/material/paginator";
     MatExpansionModule,
     MatProgressSpinnerModule,
     MatPaginatorModule
+  ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
