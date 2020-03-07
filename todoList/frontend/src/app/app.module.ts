@@ -18,6 +18,7 @@ import { TodoComponent } from "./components/todo/todo/todo.component";
 import { TodoFormComponent } from "./components/todo-form/todo-form/todo-form.component";
 import { TodoListComponent } from "./components/todo-list/todo-list/todo-list.component";
 
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { TodoListComponent } from "./components/todo-list/todo-list/todo-list.co
     MatCheckboxModule,
     MatInputModule,
     MatFormFieldModule,
-    MatListModule
+    MatListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

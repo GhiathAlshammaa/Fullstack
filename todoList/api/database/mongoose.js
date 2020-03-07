@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://admin:A113355@ds235169.mlab.com:35169/todolist2020').then(() => {
+mongoose.connect('mongodb://admin:A113355@ds235169.mlab.com:35169/todolist2020', { useNewUrlParser: true }).then(() => {
     console.log('Connection to database sucessfully');
 }).catch((e) => {
     console.log("Error while attempting to conect to Database");

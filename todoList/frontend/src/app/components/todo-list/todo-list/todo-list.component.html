@@ -1,8 +1,6 @@
 <mat-list role="list">
-  <app-todo
-    *ngFor="let toDo of toDos"
-    [toDo]="toDo"
-    ></app-todo>
-  </mat-list>
-  
-  <!-- (completeChange)="onCompleteChange(toDo, $event)" -->
+  <app-todo *ngFor="let toDo of toDos" [toDo]="toDo"></app-todo>
+  <button mat-button (click)="createNewList()">Click me!</button>
+</mat-list>
+
+<!-- (completeChange)="onCompleteChange(toDo, $event)" -->
