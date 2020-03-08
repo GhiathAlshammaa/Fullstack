@@ -1,13 +1,74 @@
-<mat-form-field>
-  <input matInput #listTitleInput />
-</mat-form-field>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title><h2>Add To Do</h2></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput #taskTitleInput min="0" maxlength="75" />
+    </mat-form-field>
 
-<div fxLayout="row" fxLayoutAlign="end">
-  <button mat-button color="primary" (click)="addTask(listTitleInput.value)">
-    Add To Do
-  </button>
-</div>
+    <div fxLayout="row" fxLayoutAlign="end">
+      <button
+        mat-button
+        color="primary"
+        (click)="addTask(taskTitleInput.value)"
+      >
+        Add To Do
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
 
-<mat-list-item *ngFor="let task of tasks">
-  <mat-checkbox>{{ task.title }}</mat-checkbox>
-</mat-list-item>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title><h2>To Do List</h2></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container>
+      <mat-list role="list">
+        <div *ngFor="let task of tasks">
+          <mat-list-item *ngIf="!task.status">
+            <mat-checkbox
+              [checked]="task.status"
+              (change)="updateTask(task, $event)"
+            >
+              {{ task.title }}
+            </mat-checkbox>
+          </mat-list-item>
+        </div>
+      </mat-list>
+    </ng-container>
+    <ng-template #allDone>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h4>All Done!! 🏖</h4>
+      </div>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title><h2>Completed 🎉</h2></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list role="list">
+      <div *ngFor="let task of tasks">
+        <mat-list-item matListItemRight *ngIf="task.status">
+          <mat-checkbox
+            [checked]="task.status"
+            (change)="updateTask(task, $event)"
+          >
+            {{ task.title }}
+          </mat-checkbox>
+          <button
+            mat-icon-button
+            [autofocus]="false"
+            (click)="removeTask(task)"
+          >
+            <mat-icon>clear</mat-icon>
+          </button>
+        </mat-list-item>
+      </div>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

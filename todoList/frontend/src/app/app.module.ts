@@ -12,6 +12,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
 
 import { AppComponent } from "./app.component";
 import { TodoListComponent } from "./components/todo-list/todo-list/todo-list.component";
@@ -30,6 +31,7 @@ import { HttpClientModule } from "@angular/common/http";
     MatInputModule,
     MatFormFieldModule,
     MatListModule,
+    MatIconModule,
     HttpClientModule
   ],
   providers: [],
