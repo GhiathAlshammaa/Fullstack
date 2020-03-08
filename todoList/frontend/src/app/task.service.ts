@@ -7,9 +7,16 @@ import { Observable } from "rxjs";
 })
 export class TaskService {
   constructor(private webReqService: WebRequestService) {}
+  task: any = [];
 
-  createList(title: string) {
-    // We want to send a web request to create a list
-    return this.webReqService.post('lists', { title });
+  getTasks() {
+    this.task = this.webReqService.get("list");
+    return this.task;
   }
+  
+  createTask(title: string) {
+    // We want to send a web request to create a list
+    return this.webReqService.post("list", { title });
+  }
+
 }

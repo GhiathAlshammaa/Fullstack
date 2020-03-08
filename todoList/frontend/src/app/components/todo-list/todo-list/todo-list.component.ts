@@ -1,9 +1,7 @@
-import { Component, OnInit, EventEmitter, Input, Output } from "@angular/core";
-// import { MatCheckboxChange } from "@angular/material/checkbox";
-import { MatButtonModule } from "@angular/material/button";
-
-import { ToDo } from "../../../todo.model";
+import { Component, OnInit } from "@angular/core";
 import { TaskService } from "src/app/task.service";
+import { Task } from 'src/app/models/task.model';
+// import { MatCheckbox } from "@angular/material/checkbox";
 
 @Component({
   selector: "app-todo-list",
@@ -11,21 +9,23 @@ import { TaskService } from "src/app/task.service";
   styleUrls: ["./todo-list.component.scss"]
 })
 export class TodoListComponent implements OnInit {
-  @Input() toDos: ToDo[];
-  @Output() toDoChange = new EventEmitter<ToDo>();
+  tasks: any;
   constructor(private taskService: TaskService) {}
 
-  // onCompleteChange(toDo: ToDo, change: MatCheckboxChange) {
-  //   this.toDoChange.emit({
-  //     ...toDo,
-  //     complete: change.checked
-  //   });
-  // }
-  createNewList() {
-    this.taskService.createList("Testing").subscribe((response: any) => {
-      console.log(response);
+  ngOnInit(): void {
+    this.getTasks();
+  }
+
+  getTasks(): void {
+    this.taskService.getTasks().subscribe((task: Task[]) => {
+      this.tasks = task;
     });
   }
 
-  ngOnInit(): void {}
+  addTask(title: string) {
+    this.taskService.createTask(title).subscribe((response: Task) => {
+      console.log(response);
+      this.tasks.push(response);
+    });
+  }
 }

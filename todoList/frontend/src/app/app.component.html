@@ -10,33 +10,7 @@
             <ng-container>
               <app-todo-list></app-todo-list>
             </ng-container>
-            <ng-template #allDone>
-              <div fxLayout="row" fxLayoutAlign="center center">
-                <h4>All Done!! 🏖</h4>
-              </div>
-            </ng-template>
           </ng-container>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title><h2>Add To Do</h2></mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <!-- <app-todo-form (toDoChange)="onAddToDoChange($event)"></app-todo-form> -->
-          <div fxLayout="row" fxLayoutAlign="end">
-            <button mat-button color="primary">Add To Do</button>
-          </div>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title><h2>Completed 🎉</h2></mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <!-- <app-todo-list [toDos]="completeToDos | async" (toDoChange)="onIncompleteToDo($event)"></app-todo-list> -->
         </mat-card-content>
       </mat-card>
     </div>

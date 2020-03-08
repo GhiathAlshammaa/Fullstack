@@ -14,18 +14,11 @@ import { MatListModule } from "@angular/material/list";
 import { MatFormFieldModule } from "@angular/material/form-field";
 
 import { AppComponent } from "./app.component";
-import { TodoComponent } from "./components/todo/todo/todo.component";
-import { TodoFormComponent } from "./components/todo-form/todo-form/todo-form.component";
 import { TodoListComponent } from "./components/todo-list/todo-list/todo-list.component";
 
 import { HttpClientModule } from "@angular/common/http";
 @NgModule({
-  declarations: [
-    AppComponent,
-    TodoComponent,
-    TodoFormComponent,
-    TodoListComponent
-  ],
+  declarations: [AppComponent, TodoListComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -6,7 +6,7 @@ const { mongoose } = require('./database/mongoose');
 const bodyParser = require('body-parser');
 
 // Load in the mongoose models
-const { List, Task } = require('./database/models');
+const { Task } = require('./database/models');
 
 // Load middleware
 app.use(bodyParser.json());
@@ -23,45 +23,48 @@ app.use(function (req, res, next) {
 /* LIST ROUTES 
 
 /** 
- * GET /lists
- * Purpose: Get all lists
+ * GET /list
+ * Purpose: Get all list
 */
-app.get('/lists', (req, res) => {
-    // We want to return an array of all the lists in the database
-    List.find({}).then((lists) => {
-        res.send(lists);
+app.get('/list', (req, res) => {
+    // We want to return an array of all the list in the database
+    Task.find({}).then((tasks) => {
+        res.send(tasks);
     }).catch((e) => {
         res.send(e);
     })
 });
 
 /** 
- * POST /lists
- * Purpose: Create a list
+ * POST /list
+ * Purpose: Create a task
 */
-app.post('/lists', (req, res) => {
-    // We want to create a new list and return the new list document back to the user (which includes the id)
-    // The list info (fields) will be passed in via the JSON request body
+app.post('/list', (req, res) => {
+    // We want to create a new task and return the new task document back to the user (which includes the id)
+    // The task info (fields) will be passed in via the JSON request body
     let title = req.body.title;
-    let newList = new List({
-        title
+    let status = true;
+    let newTask = new Task({
+        title,
+        status
     });
-    newList = new List({
-        title
+    newTask = new Task({
+        title,
+        status
     });
-    newList.save().then((listDoc) => {
-        // the full list document is returned (incl. id)
-        res.send(listDoc);
+    newTask.save().then((taskDoc) => {
+        // the full task document is returned (incl. id)
+        res.send(taskDoc);
     })
 });
 
 /** 
- * PATCH /lists/:id
- * Purpose: Update a speified list
+ * PATCH /list/:id
+ * Purpose: Update a speified task
 */
-app.patch('/lists/:id', (req, res) => {
-    // we want to update the specified list (list document with id in the URL) with the new values specified in the JSON body of the request
-    List.findOneAndUpdate({ _id: req.params.id }, {
+app.patch('/list/:id', (req, res) => {
+    // we want to update the specified task (task document with id in the URL) with the new values specified in the JSON body of the request
+    Task.findOneAndUpdate({ _id: req.params.id }, {
         $set: req.body
     }).then(() => {
         res.sendStatus(200);
@@ -69,12 +72,12 @@ app.patch('/lists/:id', (req, res) => {
 });
 
 /** 
- * DELETE /lists/:id
- * Purpose: Delete a list
+ * DELETE /list/:id
+ * Purpose: Delete a task
 */
-app.delete('/lists/:id', (req, res) => {
-    // we want to delete the specified list (document with id in the URL)
-    List.findByIdAndDelete({
+app.delete('/list/:id', (req, res) => {
+    // we want to delete the specified task (document with id in the URL)
+    Task.findByIdAndDelete({
         _id: req.params.id
     }).then((removeListDoc) => {
         res.send(removeListDoc);

@@ -1,6 +1,13 @@
-<mat-list role="list">
-  <app-todo *ngFor="let toDo of toDos" [toDo]="toDo"></app-todo>
-  <button mat-button (click)="createNewList()">Click me!</button>
-</mat-list>
+<mat-form-field>
+  <input matInput #listTitleInput />
+</mat-form-field>
 
-<!-- (completeChange)="onCompleteChange(toDo, $event)" -->
+<div fxLayout="row" fxLayoutAlign="end">
+  <button mat-button color="primary" (click)="addTask(listTitleInput.value)">
+    Add To Do
+  </button>
+</div>
+
+<mat-list-item *ngFor="let task of tasks">
+  <mat-checkbox>{{ task.title }}</mat-checkbox>
+</mat-list-item>
