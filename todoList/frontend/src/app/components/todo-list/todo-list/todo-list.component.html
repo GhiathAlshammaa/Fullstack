@@ -4,7 +4,7 @@
   </mat-card-header>
   <mat-card-content>
     <mat-form-field>
-      <input matInput #taskTitleInput min="0" maxlength="75" />
+      <input matInput #taskTitleInput min="0" maxlength="50" />
     </mat-form-field>
 
     <div fxLayout="row" fxLayoutAlign="end">
@@ -29,6 +29,7 @@
         <div *ngFor="let task of tasks">
           <mat-list-item *ngIf="!task.status">
             <mat-checkbox
+              mat-line
               [checked]="task.status"
               (change)="updateTask(task, $event)"
             >
@@ -37,12 +38,12 @@
           </mat-list-item>
         </div>
       </mat-list>
+      <ng-container *ngIf="!allDone">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <h4>All Done!! 🏖</h4>
+        </div>
+      </ng-container>
     </ng-container>
-    <ng-template #allDone>
-      <div fxLayout="row" fxLayoutAlign="center center">
-        <h4>All Done!! 🏖</h4>
-      </div>
-    </ng-template>
   </mat-card-content>
 </mat-card>
 
@@ -55,6 +56,7 @@
       <div *ngFor="let task of tasks">
         <mat-list-item matListItemRight *ngIf="task.status">
           <mat-checkbox
+            mat-line
             [checked]="task.status"
             (change)="updateTask(task, $event)"
           >
