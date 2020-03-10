@@ -1,4 +1,4 @@
-// This file'll handle connection logic to the MongoDB
+/* This file will handle an connection logic to the MongoDB Database */
 
 const mongoose = require('mongoose');
 
@@ -11,7 +11,7 @@ mongoose.connect('mongodb://admin:A113355@ds235169.mlab.com:35169/todolist2020')
     console.log(e);
 })
 
-// To prevent deprectation warnings (From Database)
+// To prevent Depreciation warnings (From Database)
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);

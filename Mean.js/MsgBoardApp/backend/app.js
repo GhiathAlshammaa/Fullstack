@@ -8,7 +8,7 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-mongoose.connect("mongodb://admin:admin113355@ds135335.mlab.com:35335/notes", { useNewUrlParser: true })
+mongoose.connect("mongodb://admin:admin113355@ds135335.mlab.com:35335/notes", { useNewUrlParser: true, useUnifiedTopology: true, 'useCreateIndex': true, 'useFindAndModify': false })
     .then(() => {
         console.log('connected to database!');
     })

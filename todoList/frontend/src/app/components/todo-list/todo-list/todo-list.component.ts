@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { TaskService } from "src/app/task.service";
 import { Task } from "src/app/models/task.model";
-// import { MatCheckboxChange } from "@angular/material/checkbox";
 
 @Component({
   selector: "app-todo-list",
