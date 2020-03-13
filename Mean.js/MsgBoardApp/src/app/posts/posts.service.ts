@@ -36,7 +36,8 @@ export class PostsService {
                 type: post.type,
                 content: post.content,
                 id: post._id,
-                image: post.image
+                image: post.image,
+                creator: post.creator
               };
             }),
             maxPosts: postData.maxPosts
