@@ -10,6 +10,7 @@ export class AuthService {
   private isAuthenticated = false;
   private token: string;
   private tockenTimer: any;
+  private userId: string;
   private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -20,6 +21,10 @@ export class AuthService {
 
   getIsAuth() {
     return this.isAuthenticated;
+  }
+
+  getUserId() {
+    return this.userId;
   }
 
   getAuthStatusListener() {
@@ -38,7 +43,7 @@ export class AuthService {
   login(email: string, password: string) {
     const authData: AuthData = { email: email, password: password };
     this.http
-      .post<{ token: string; expiresIn: number }>(
+      .post<{ token: string; expiresIn: number; userId: string }>(
         "http://localhost:3000/api/user/login",
         authData
       )
@@ -49,6 +54,7 @@ export class AuthService {
           const expiresInDuration = response.expiresIn;
           this.setAuthTimer(expiresInDuration);
           this.isAuthenticated = true;
+          this.userId = response.userId;
           this.authStatusListener.next(true);
           const now = new Date();
           const expirationDate = new Date(
@@ -63,7 +69,9 @@ export class AuthService {
 
   autoAuthUser() {
     const authInformation = this.getAuthData();
-    if (!authInformation) { return; }
+    if (!authInformation) {
+      return;
+    }
     const now = new Date();
     const expiresIn = authInformation.expirationDate.getTime() - now.getTime();
     if (expiresIn > 0) {
