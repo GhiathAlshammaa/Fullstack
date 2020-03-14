@@ -12,7 +12,7 @@ exports.createUser = (req, res, next) => {
         user
             .save()
             .then(result => {
-                res.status(201).json({
+                res.status(200).json({
                     message: 'User created!',
                     result: result
                 });
