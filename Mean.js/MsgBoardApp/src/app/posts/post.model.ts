@@ -6,4 +6,5 @@ export interface Post {
   content: string;
   type: postTypes;
   image: any;
+  creator: string;
 }
