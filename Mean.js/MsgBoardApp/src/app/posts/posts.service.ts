@@ -8,7 +8,7 @@ import { environment } from "../../environments/environment";
 import { Post } from "./post.model";
 import { postTypes } from "./postTypes.enum";
 
-const BACKEND_URL = environment.apiUrl + "/posts";
+const BACKEND_URL = environment.apiUrl + "/posts/";
 
 @Injectable({ providedIn: "root" })
 export class PostsService {
