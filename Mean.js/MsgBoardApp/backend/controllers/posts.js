@@ -2,6 +2,8 @@ const Post = require('../models/post');
 
 exports.createPost = (req, res, next) => {
     const url = req.protocol + '://' + req.get("host");
+    console.log("imagePath: " + imagePath);
+
     const post = new Post({
         title: req.body.title,
         content: req.body.content,
@@ -31,6 +33,7 @@ exports.updatePost = (req, res, next) => {
     if (req.file) {
         const url = req.protocol + '://' + req.get("host");
         imagePath = url + '/images/' + req.file.filename;
+        console.log("imagePath: " + imagePath);
     }
     const post = new Post({
         _id: req.body.id,
