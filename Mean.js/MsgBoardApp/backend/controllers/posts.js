@@ -2,7 +2,6 @@ const Post = require('../models/post');
 
 exports.createPost = (req, res, next) => {
     const url = req.protocol + '://' + req.get("host");
-    console.log("imagePath: " + imagePath);
 
     const post = new Post({
         title: req.body.title,
