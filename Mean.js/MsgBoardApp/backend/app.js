@@ -18,7 +18,7 @@ mongoose.connect("mongodb://admin:" + process.env.MONGO_ALTAS_PW + "@ds135335.ml
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use('/images', express.static(path.join('backend/images')));
+app.use('/images', express.static(path.join('images')));
 
 
 app.use((req, res, next) => {
