@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: "http://localhost:3000/api"
+  apiUrl:
+    "http://Msgboardapp-env.eba-5buihybd.us-east-2.elasticbeanstalk.com/api"
 };
