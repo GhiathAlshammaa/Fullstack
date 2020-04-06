@@ -15,6 +15,16 @@ mat-card h2 {
   margin-bottom: 1.25rem;
 }
 
-mat-form-field {
+mat-card form mat-form-field {
   width: 100%;
+}
+
+mat-card form .button-flex-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+mat-card form .button-flex-container button {
+  width: 9.375rem;
 }
