@@ -14,7 +14,6 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 
 /* Auth Module */
-
 import { AuthModule } from "./auth/auth.module";
 
 @NgModule({
