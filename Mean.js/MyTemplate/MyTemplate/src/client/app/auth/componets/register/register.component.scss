@@ -13,6 +13,8 @@ mat-card {
 mat-card h2 {
   text-align: center;
   margin-bottom: 1.25rem;
+  color: #673ab7;
+  font-weight: bold;
 }
 
 mat-card form mat-form-field {
@@ -27,4 +29,21 @@ mat-card form .button-flex-container {
 
 mat-card form .button-flex-container button {
   width: 9.375rem;
+}
+
+/* default and hover color */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #cccccc;
+}
+
+/* focused color */
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  color: #673ab7;
+}
+
+/* floating label color */
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-label {
+  color: #673ab7;
 }

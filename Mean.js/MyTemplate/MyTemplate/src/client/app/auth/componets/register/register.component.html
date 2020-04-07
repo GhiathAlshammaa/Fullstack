@@ -1,41 +1,40 @@
 <div class="main">
   <mat-card>
     <form [formGroup]="form" (submit)="onSubmit()">
-      <h2>Register</h2>
-      <mat-form-field
-        ><input
-          type="text"
-          matInput
-          placeholder="First Name"
-          formControlName="firstName"
-          required
+      <h2 color="primary">Register</h2>
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput formControlName="firstName" required
       /></mat-form-field>
-      <mat-form-field
-        ><input
-          type="text"
-          matInput
-          placeholder="Last Name"
-          formControlName="lastName"
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput formControlName="lastName"
       /></mat-form-field>
-      <mat-form-field
-        ><input type="email" matInput placeholder="Email"
-      /></mat-form-field>
-      <mat-form-field
-        ><input
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput required />
+        <mat-icon matSuffix color="primary">mail_outline</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" required />
+        <mat-icon matSuffix class="material-icons-outlined" color="primary"
+          >vpn_key</mat-icon
+        >
+      </mat-form-field>
+      <mat-form-field appearance="outline" >
+        <mat-label>Confirm Password</mat-label>
+        <input
           type="password"
           matInput
-          placeholder="Password"
-          formControlName="password"
-          required
-      /></mat-form-field>
-      <mat-form-field
-        ><input
-          type="password"
-          matInput
-          placeholder="Confirm Password"
           formControlName="confirmPassword"
-          required /></mat-form-field
+          required
+        />
+        <mat-icon matSuffix class="material-icons-outlined" color="primary"
+          >verified_user</mat-icon
+        > </mat-form-field
       ><br />
+
       <div class="button-flex-container">
         <button
           mat-raised-button
@@ -43,7 +42,7 @@
           layout-align="center center"
           type="submit"
         >
-          Register
+          Sign up
         </button>
       </div>
     </form>
