@@ -7,7 +7,7 @@
 }
 
 mat-card {
-  width: 40vw;
+  width: 30vw;
 }
 
 mat-card h2 {
@@ -46,4 +46,12 @@ mat-card form .button-flex-container button {
 /* floating label color */
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-label {
   color: #673ab7;
+}
+
+.error {
+  background-color: #fff0f0;
+}
+
+mat-hint {
+  color: red;
 }
