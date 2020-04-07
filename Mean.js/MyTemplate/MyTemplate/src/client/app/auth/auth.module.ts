@@ -12,6 +12,10 @@ import { MatIconModule } from "@angular/material/icon";
 /* Form */
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
+/* Service */
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
+
 @NgModule({
   declarations: [RegisterComponent, LoginComponent],
   imports: [
@@ -25,6 +29,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     /* Form */
     FormsModule,
     ReactiveFormsModule,
+    /* Service */
+    HttpClientModule,
+
   ],
+  providers: [AuthService]
 })
 export class AuthModule {}
