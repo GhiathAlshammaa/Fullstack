@@ -9,6 +9,7 @@ import { AuthService } from '../../auth.service';
 })
 export class RegisterComponent implements OnInit {
   form: any;
+  active = true; 
 
   constructor(private formBuilder: FormBuilder, private auth: AuthService) {
     this.form = formBuilder.group({
@@ -23,8 +24,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    // console.log(this.form.errors);
     this.auth.register(this.form.value);
+    console.log(this.form.invalid);
+    if(!this.form.invalid)
+    {
+      this.form.reset();
+    }
   }
 
   isValid(control) {

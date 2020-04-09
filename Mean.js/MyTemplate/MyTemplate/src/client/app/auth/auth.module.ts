@@ -17,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth.service';
 
 @NgModule({
-  declarations: [RegisterComponent, LoginComponent],
+  declarations: [RegisterComponent,  LoginComponent],
   imports: [
     CommonModule,
     /* Material */
@@ -31,8 +31,8 @@ import { AuthService } from './auth.service';
     ReactiveFormsModule,
     /* Service */
     HttpClientModule,
-
   ],
+  exports : [RegisterComponent,  LoginComponent],
   providers: [AuthService]
 })
 export class AuthModule {}
