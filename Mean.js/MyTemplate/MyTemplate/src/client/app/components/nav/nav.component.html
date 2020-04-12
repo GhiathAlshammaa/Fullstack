@@ -2,6 +2,7 @@
   MyTemplate
   <a mat-button routerLink="">Home</a>
   <div class="space"></div>
+  <a mat-button *ngIf="!auth.isAuthenticated"  routerLink="/login">Login</a>
   <a mat-button *ngIf="!auth.isAuthenticated"  routerLink="/register">Register</a>
   <a mat-button *ngIf="auth.isAuthenticated" routerLink="/"> Hello {{auth.name}}</a>
   <a mat-button *ngIf="auth.isAuthenticated" (click)=auth.logout()>Logout</a>
