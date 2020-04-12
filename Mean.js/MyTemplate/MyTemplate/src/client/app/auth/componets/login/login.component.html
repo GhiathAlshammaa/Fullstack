@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div class="main">
+    <mat-card>
+        <h2 color="primary">Login</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" [(ngModel)]="loginData.email" required />
+          <mat-icon matSuffix color="primary">mail_outline</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" [(ngModel)]="loginData.password" required />
+          <mat-icon matSuffix class="material-icons-outlined" color="primary"
+            >vpn_key</mat-icon
+          >
+        </mat-form-field>
+        <div class="button-flex-container">
+            <button
+              mat-raised-button
+              color="primary"
+              layout-align="center center"
+              (click)="login()" 
+            >
+            Login
+            </button>
+        </div>
+    </mat-card>
+</div>
