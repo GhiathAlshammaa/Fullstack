@@ -15,6 +15,7 @@ import { MatButtonModule } from "@angular/material/button";
 
 /* Auth Module & Service */
 import { AuthModule } from './auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, NavComponent, HomeComponent],
@@ -27,6 +28,8 @@ import { AuthModule } from './auth/auth.module';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    /* Http */
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],
