@@ -26,8 +26,7 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.auth.register(this.form.value);
     console.log(this.form.invalid);
-    if(!this.form.invalid)
-    {
+    if(!this.form.invalid){
       this.form.reset();
     }
   }
@@ -47,6 +46,7 @@ function matchingFields(field1, field2) {
 
 function emailValid() {
   return control => {
+    // tslint:disable-next-line: max-line-length
     const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regex.test(control.value) ? null : { invalidEmail: true };
   }
