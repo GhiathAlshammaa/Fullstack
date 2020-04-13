@@ -3,27 +3,40 @@ var express = require ('express');
 var app = express();
 var bodyParser = require('body-parser');
 var jwt = require('jsonwebtoken');
+var cors = require('cors');
 
 /* Data Storage Section */
 var users = [{firstName: 'a', email: 'a', password: 'a', id: 0}];
 
 /* CORS Section */
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-})
+app.use(cors());
 
 /* Routers Section */
 var auth = express.Router();
+var api = express.Router();
 
 
 /* REST Api logic */
+// Users
+api.get('/users/me', checkAuth, (req,res) => {
+    console.log(req.user);
+    res.json(users[req.user]);
+})
+
+api.post('/users/me', checkAuth, (req,res) => {
+    res.json(users[req.user]);
+    var user = users[req.user];
+
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+
+    res.json(user);
+})
+
 // Authorization (LogIn)
 auth.post('/login', (req, res) => {
     var user = users.find(user => user.email == req.body.email);
-    console.log(req.body);
     if(!user)  
         sendAuthError(res);
 
@@ -54,7 +67,28 @@ function sendAuthError(res) {
     return res.json({success: false, message: 'Email or Password incoreect'});;
 }
 
+function checkAuth(req, res, next){
+    console.log(req.header);
+    if(!req.header('authorization'))
+        return res.status(401).send({message: 'Unauthorized requested, Missing authentication header'});
+
+    try {
+        var token = req.header.authorization.split(' ')[1];
+        var payload = jwt.verify(token,"123");
+        req.user = payload;
+        next();
+    } catch(error) {
+        if(!payload)
+        return res.status(401).send({message: 'Unauthorized requested, authentication header invalid'});
+    }
+
+    // var payload = jwt.decode(token, '123');
+    // req.user = payload;
+    // next();
+}
+
 /* Binding the logic with router */
+app.use('/api', api);
 app.use('/auth', auth);
 
 /* Server Port */

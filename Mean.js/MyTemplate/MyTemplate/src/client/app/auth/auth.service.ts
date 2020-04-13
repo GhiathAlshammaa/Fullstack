@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpHandler } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -17,6 +17,17 @@ export class AuthService {
 
   get isAuthenticated() {
     return !!localStorage.getItem(this.TOKEN_KEY);
+  }
+
+  get tokenHeader() {
+   var req: HttpRequest<any>;
+   var next: HttpHandler;
+
+   const authToken = localStorage.getItem(this.TOKEN_KEY);
+   const authReq = req.clone({
+     headers: req.headers.set("Authorization", "Bearer " + authToken)
+   });
+   return next.handle(authReq);
   }
 
   login(loginData) {
