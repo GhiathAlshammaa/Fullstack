@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpHandler } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
+export interface RequestOptions {
+  headers?: HttpHeaders;
+  params?: HttpParams;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -20,14 +23,15 @@ export class AuthService {
   }
 
   get tokenHeader() {
-   var req: HttpRequest<any>;
-   var next: HttpHandler;
+    const header = new HttpHeaders({
+          Authorization: 'Bearer ' + localStorage.getItem(this.TOKEN_KEY)
+      });
 
-   const authToken = localStorage.getItem(this.TOKEN_KEY);
-   const authReq = req.clone({
-     headers: req.headers.set("Authorization", "Bearer " + authToken)
-   });
-   return next.handle(authReq);
+    const requestOptions: RequestOptions = {
+      headers: header,
+      // params: new HttpParams()
+    };
+    return requestOptions;
   }
 
   login(loginData) {
@@ -36,7 +40,7 @@ export class AuthService {
       this.authenticate(res);
     });
   }
-  register(user){
+  register(user) {
 
     const url = `${this.BASE_URL}/register`;
     delete user.confirmPassword;

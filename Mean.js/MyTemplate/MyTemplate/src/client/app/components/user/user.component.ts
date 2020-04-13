@@ -15,16 +15,16 @@ export class UserComponent implements OnInit {
     lastName: ''
   };
 
-  ngOnInit(): void {
-    // this.webService.getUser().subscribe(res => {
-    //   this.model.firstName = res.firstName;
-    //   this.model.lastName = res.lastName;
-    // })
+  ngOnInit() {
+    this.webService.getUser().subscribe(res => {
+      this.model.firstName = res.firstName;
+      this.model.lastName = res.lastName;
+    })
   }
 
   saveChanges() {
-    // this.webService.saveUser(this.model).subscribe();
-    console.log("Not yet Done");
+    this.webService.saveUser(this.model).subscribe();
+    // console.log("Not yet Done");
   }
 
 }

@@ -20,8 +20,8 @@ var api = express.Router();
 /* REST Api logic */
 // Users
 api.get('/users/me', checkAuth, (req,res) => {
-    console.log(req.user);
-    res.json(users[req.user]);
+    // console.log(users[req.user.id]);
+    res.json(users[req.user.id]);
 })
 
 api.post('/users/me', checkAuth, (req,res) => {
@@ -68,23 +68,19 @@ function sendAuthError(res) {
 }
 
 function checkAuth(req, res, next){
-    console.log(req.header);
+    console.log(JSON.stringify(req.header));
     if(!req.header('authorization'))
         return res.status(401).send({message: 'Unauthorized requested, Missing authentication header'});
 
     try {
-        var token = req.header.authorization.split(' ')[1];
-        var payload = jwt.verify(token,"123");
-        req.user = payload;
-        next();
+        var token = req.header('authorization').split(' ')[1];
+        var payload = jwt.decode(token, '123');
     } catch(error) {
         if(!payload)
         return res.status(401).send({message: 'Unauthorized requested, authentication header invalid'});
     }
-
-    // var payload = jwt.decode(token, '123');
-    // req.user = payload;
-    // next();
+    req.user = payload;
+    next();
 }
 
 /* Binding the logic with router */

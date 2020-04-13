@@ -7,15 +7,17 @@ import { AuthService } from "../auth/auth.service";
   providedIn: 'root'
 })
 export class WebService {
-  BASE_URL = 'http://localhost:3000/';
+  BASE_URL = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient, private router: Router, private auth: AuthService) { }
 
   getUser() {
-    console.log("get User Test!");
-    return this.http.get<any>(this.BASE_URL + 'users/me', this.auth.tokenHeader as any).map(x => x);
+    // return this.http.get<any>(`${this.BASE_URL}users/me`,  this.auth.tokenHeader).map(x => x.json());
+    // return this.http.get<any>(this.BASE_URL + '/users/me', this.auth.tokenHeader).map(res => res.json());
+    return this.http.get<any>(`${this.BASE_URL}/users/me`, this.auth.tokenHeader).map(res => res);
+
   }
   saveUser(userData) {
-    return this.http.post<any>(this.BASE_URL + 'users/me', userData, this.auth.tokenHeader as any).map(x => x);
+    return this.http.post<any>(`${this.BASE_URL}users/me`, userData, this.auth.tokenHeader).map(x => x.json());
   }
 }
