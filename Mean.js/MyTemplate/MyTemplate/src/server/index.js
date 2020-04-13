@@ -68,7 +68,6 @@ function sendAuthError(res) {
 }
 
 function checkAuth(req, res, next){
-    console.log(JSON.stringify(req.header));
     if(!req.header('authorization'))
         return res.status(401).send({message: 'Unauthorized requested, Missing authentication header'});
 

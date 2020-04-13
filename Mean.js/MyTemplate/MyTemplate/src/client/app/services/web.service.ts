@@ -12,10 +12,7 @@ export class WebService {
   constructor(private http: HttpClient, private router: Router, private auth: AuthService) { }
 
   getUser() {
-    // return this.http.get<any>(`${this.BASE_URL}users/me`,  this.auth.tokenHeader).map(x => x.json());
-    // return this.http.get<any>(this.BASE_URL + '/users/me', this.auth.tokenHeader).map(res => res.json());
     return this.http.get<any>(`${this.BASE_URL}/users/me`, this.auth.tokenHeader).map(res => res);
-
   }
   saveUser(userData) {
     return this.http.post<any>(`${this.BASE_URL}users/me`, userData, this.auth.tokenHeader).map(x => x.json());
