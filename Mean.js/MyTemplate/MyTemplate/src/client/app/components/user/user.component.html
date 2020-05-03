@@ -1,25 +1,25 @@
 <div class="main">
-    <mat-card>
-        <h2 color="primary">User</h2>
-        <mat-form-field appearance="outline">
-          <mat-label>Firstname</mat-label>
-          <input matInput type="text" [(ngModel)]="model.firstName" />
-          <mat-icon matSuffix color="primary">face</mat-icon>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Lastname</mat-label>
-          <input matInput type="text" [(ngModel)]="model.lastName" />
-          <mat-icon matSuffix color="primary">people_alt</mat-icon>
-        </mat-form-field>
-        <div class="button-flex-container">
-            <button
-              mat-raised-button
-              color="primary"
-              layout-align="center center"
-              (click)="saveChanges()" 
-            >
-            Save Changes
-            </button>
-        </div>
-    </mat-card>
+  <mat-card>
+    <h2 color="primary">User</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Firstname</mat-label>
+      <input matInput type="text" [(ngModel)]="model.firstName" />
+      <mat-icon matSuffix color="primary">face</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Lastname</mat-label>
+      <input matInput type="text" [(ngModel)]="model.lastName" />
+      <mat-icon matSuffix color="primary">people_alt</mat-icon>
+    </mat-form-field>
+    <div class="button-flex-container">
+      <button
+        mat-raised-button
+        color="primary"
+        layout-align="center center"
+        (click)="saveChanges()"
+      >
+        Save Changes
+      </button>
+    </div>
+  </mat-card>
 </div>

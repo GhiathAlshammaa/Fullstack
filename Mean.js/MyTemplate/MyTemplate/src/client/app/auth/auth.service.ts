@@ -7,13 +7,13 @@ export interface RequestOptions {
   params?: HttpParams;
 }
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   BASE_URL = 'http://localhost:3000/auth';
   NAME_KEY = 'name';
   TOKEN_KEY = 'token';
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
   get name() {
     return localStorage.getItem(this.NAME_KEY);
   }
@@ -24,8 +24,8 @@ export class AuthService {
 
   get tokenHeader() {
     const header = new HttpHeaders({
-          Authorization: 'Bearer ' + localStorage.getItem(this.TOKEN_KEY)
-      });
+      Authorization: 'Bearer ' + localStorage.getItem(this.TOKEN_KEY),
+    });
 
     const requestOptions: RequestOptions = {
       headers: header,
@@ -36,17 +36,15 @@ export class AuthService {
 
   login(loginData) {
     const url = `${this.BASE_URL}/login`;
-    this.http.post<any>(url, loginData).subscribe(res => {
+    this.http.post<any>(url, loginData).subscribe((res) => {
       this.authenticate(res);
     });
   }
   register(user) {
-
     const url = `${this.BASE_URL}/register`;
     delete user.confirmPassword;
-    this.http.post<any>(url, user).subscribe(res => {
-        this.authenticate(res, '/login');
-
+    this.http.post<any>(url, user).subscribe((res) => {
+      this.authenticate(res, '/login');
     });
   }
   logout() {
@@ -63,6 +61,8 @@ export class AuthService {
 
     localStorage.setItem(this.TOKEN_KEY, authResponse.token);
     localStorage.setItem(this.NAME_KEY, authResponse.firstName);
-    url === null ? this.router.navigate(['/login']) : this.router.navigate([`${url}`]);
+    url === null
+      ? this.router.navigate(['/login'])
+      : this.router.navigate([`${url}`]);
   }
 }
