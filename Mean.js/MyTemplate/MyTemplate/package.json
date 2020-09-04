@@ -33,7 +33,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^2.2.33",
+    "mongodb": "^3.1.13",
     "mongoose": "^5.9.6",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.5",
